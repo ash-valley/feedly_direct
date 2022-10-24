@@ -1,18 +1,27 @@
 {
     "name": "feedly_direct",
     "description": "feedlyのfeedsから直接ページにアクセス",
-    "version": "1.0",
+    "version": "1.0.0",
     "manifest_version": 3,
+    "background": {
+        "service_worker": "background.js"
+    },
     "content_scripts": [
         {
             "matches": [
-                "https://feedly.com/i/**"
+                "https://feedly.com/i/*"
             ],
             "js": [
                 "content.js"
-            ],
-            "run_at": "document_end",
-            "all_frames": true
+            ]
         }
+    ],
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "runtime"
+    ],
+    "host_permissions": [
+        "https://feedly.com/i/*"
     ]
 }

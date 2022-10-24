@@ -1,18 +1,10 @@
-window.addEventListener("load", main, false);
-
-function main(e) {
-  const jsInitCheckTimer = setInterval(jsLoaded, 1000);
-  function jsLoaded() {
-    if (document.querySelector("article") != null) {
-      clearInterval(jsInitCheckTimer);
-      addDirectAnchor();
-    }
-  }
-}
-
-function addDirectAnchor() {
+function addArticleLink() {
   const articles = document.querySelectorAll("article");
   for (const article of articles) {
+    const newId = `${article.id}_link`;
+    if (document.getElementById(newId) != null) {
+      return;
+    }
     const entry = article.querySelector(".entry__title");
     const url = entry.attributes.getNamedItem("href").value;
     const newAnchor = document.createElement("a");
@@ -21,6 +13,7 @@ function addDirectAnchor() {
     newAnchor.style.fontSize = "16px";
     newAnchor.style.padding = "8px";
     newAnchor.style.color = "red";
+    newAnchor.id = newId;
     newAnchor.appendChild(
       document.createTextNode("🔗 Go article page & Mark as read!")
     );
@@ -31,3 +24,14 @@ function addDirectAnchor() {
     article.before(newAnchor);
   }
 }
+
+(function () {
+  "use strict";
+  chrome.runtime.onMessage.addListener(function (message, sender, callback) {
+    if (message.type === "hoge") {
+      setTimeout(addArticleLink, 1000);
+    } else if (message.type === "foo") {
+      console.log("bar");
+    }
+  });
+})();
