@@ -18,8 +18,7 @@
     ],
     "permissions": [
         "activeTab",
-        "scripting",
-        "runtime"
+        "scripting"
     ],
     "host_permissions": [
         "https://feedly.com/i/*"
