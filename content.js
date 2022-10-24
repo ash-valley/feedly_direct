@@ -28,10 +28,8 @@ function addArticleLink() {
 (function () {
   "use strict";
   chrome.runtime.onMessage.addListener(function (message, sender, callback) {
-    if (message.type === "hoge") {
+    if (message.type === "addArticleLink") {
       setTimeout(addArticleLink, 1000);
-    } else if (message.type === "foo") {
-      console.log("bar");
     }
   });
 })();

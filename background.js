@@ -3,7 +3,7 @@ chrome.tabs.onUpdated.addListener(async function (tabId, changeInfo, tab) {
     return;
   }
   if (tab.url && tab.url.indexOf("https://feedly.com/i/") >= 0) {
-    const message = { type: "hoge" };
+    const message = { type: "addArticleLink" };
     try {
       await chrome.tabs.sendMessage(tabId, message, (res) => {
         console.log(res);
