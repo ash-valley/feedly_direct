@@ -18,7 +18,8 @@
     ],
     "permissions": [
         "activeTab",
-        "scripting"
+        "scripting",
+        "nativeMessaging"
     ],
     "host_permissions": [
         "https://feedly.com/i/*"

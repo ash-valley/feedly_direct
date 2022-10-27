@@ -11,7 +11,7 @@ function addArticleLink() {
     newAnchor.setAttribute("href", url);
     newAnchor.setAttribute("target", "_brank");
     newAnchor.style.fontSize = "16px";
-    newAnchor.style.padding = "8px";
+    newAnchor.style.padding = "8px 0px 8px 0px";
     newAnchor.style.color = "red";
     newAnchor.id = newId;
     newAnchor.appendChild(
@@ -29,7 +29,9 @@ function addArticleLink() {
   "use strict";
   chrome.runtime.onMessage.addListener(function (message, sender, callback) {
     if (message.type === "addArticleLink") {
-      setTimeout(addArticleLink, 1000);
+      // TODO ここやめたい
+      setTimeout(addArticleLink, 2000);
     }
+    return true;
   });
 })();
